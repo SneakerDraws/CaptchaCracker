@@ -50,11 +50,11 @@ class CreateModel:
         self.max_length = max([len(label) for label in self.labels])
 
         # Mapping characters to integers
-        self.char_to_num = layers.experimental.preprocessing.StringLookup(
+        self.char_to_num = layers.preprocessing.StringLookup(
             vocabulary=sorted(self.characters), num_oov_indices=0, mask_token=None
         )
         # Mapping integers back to original characters
-        self.num_to_char = layers.experimental.preprocessing.StringLookup(
+        self.num_to_char = layers.preprocessing.StringLookup(
             vocabulary=self.char_to_num.get_vocabulary(), mask_token=None, invert=True
         )
         
@@ -221,11 +221,11 @@ class ApplyModel:
         self.characters = characters
                 
         # Mapping characters to integers
-        self.char_to_num = layers.experimental.preprocessing.StringLookup(
+        self.char_to_num = layers.preprocessing.StringLookup(
             vocabulary=sorted(self.characters), num_oov_indices=0, mask_token=None
         )
         # Mapping integers back to original characters
-        self.num_to_char = layers.experimental.preprocessing.StringLookup(
+        self.num_to_char = layers.preprocessing.StringLookup(
             vocabulary=self.char_to_num.get_vocabulary(), mask_token=None, invert=True
         )
         # Model
